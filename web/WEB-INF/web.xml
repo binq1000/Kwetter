@@ -7,16 +7,20 @@
         <param-name>Title</param-name>
         <param-value>Testing</param-value>
     </context-param>
+
+
     <servlet>
-        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-name>DefaultServlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
     <servlet-mapping>
-        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-name>DefaultServlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+
     <welcome-file-list>
-        <welcome-file>kweetOverview.xhtml</welcome-file>
+        <welcome-file>user.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>
