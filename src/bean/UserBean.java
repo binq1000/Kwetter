@@ -16,7 +16,7 @@ public class UserBean implements Serializable {
 	@Inject
 	private User user;
 
-	public String Test() {
-		return "asdas";
+	public User getUser() {
+		return user;
 	}
 }
