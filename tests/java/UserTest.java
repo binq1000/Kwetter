@@ -100,6 +100,7 @@ public class UserTest {
 	@Test
 	public void followUser() {
 		//Used in setup
+
 	}
 
 }
