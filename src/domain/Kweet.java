@@ -2,6 +2,8 @@ package domain;
 
 import javax.enterprise.inject.Model;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
@@ -9,6 +11,8 @@ import java.util.Date;
  */
 @Entity @Model
 public class Kweet {
+	@Id	@GeneratedValue
+	private Long id;
 	private String message;
 	private Date datePosted;
 	private User poster;
@@ -25,6 +29,14 @@ public class Kweet {
 	}
 
 	//region Getters and Setters
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getMessage() {
 		return message;
 	}

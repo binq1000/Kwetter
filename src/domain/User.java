@@ -36,6 +36,7 @@ public class User {
 
 	@PostConstruct
 	private void initUser() {
+		this.username = "default";
 		this.imagePath = "defaultPath";
 		this.kweets = new ArrayList<Kweet>();
 		this.following = new ArrayList<User>();
@@ -95,12 +96,35 @@ public class User {
 		user.addFollower(this);
 	}
 
+	public void unfollowUser(User user) {
+		if (this.equals(user)) throw new IllegalArgumentException("Can't unfollow yourself");
+		removeFollowing(user);
+		user.removeFollower(this);
+	}
+
 	public void addFollowing(User user) {
-		this.following.add(user);
+		if (!this.following.contains(user)) {
+			this.following.add(user);
+		}
+
+	}
+
+	public void removeFollowing(User user) {
+		if (this.following.contains(user)) {
+			this.following.remove(user);
+		}
 	}
 
 	public void addFollower(User user) {
-		this.followers.add(user);
+		if (!this.followers.contains(user)) {
+			this.followers.add(user);
+		}
+	}
+
+	public void removeFollower(User user) {
+		if (this.followers.contains(user)) {
+			this.followers.remove(user);
+		}
 	}
 
 }
