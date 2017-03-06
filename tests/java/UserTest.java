@@ -1,6 +1,5 @@
-package domain;
-
-
+import domain.Kweet;
+import domain.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +11,9 @@ public class UserTest {
 	User user1, user2, user3, user4, user5;
 	Kweet kweet1, kweet2, kweet3, kweet4, kweet5;
 	String alternativeUsername = "alt";
+	String altDetails = "altDetails";
+	String altEmail = "altEmail";
+	String altImage = "altPath";
 
 	@Before
 	public void setUp(){
@@ -29,7 +31,7 @@ public class UserTest {
 
 
 		user1.followUser(user2);
-
+		user2.followUser(user1);
 	}
 
 	@Test
@@ -58,43 +60,46 @@ public class UserTest {
 	}
 
 	@Test
-	public void getDetails() throws Exception {
-
+	public void getDetails()  {
+		Assert.assertTrue(user1.getDetails() == "first one");
 	}
 
 	@Test
-	public void setDetails() throws Exception {
-
+	public void setDetails(){
+		user1.setDetails(altDetails);
+		Assert.assertTrue(user1.getDetails() == altDetails);
 	}
 
 	@Test
-	public void geteMail() throws Exception {
-
+	public void geteMail() {
+		Assert.assertTrue(user1.geteMail() == "test@hotmail.com");
 	}
 
 	@Test
-	public void seteMail() throws Exception {
-
+	public void seteMail() {
+		user1.seteMail(altEmail);
+		Assert.assertTrue(user1.geteMail() == altEmail);
 	}
 
 	@Test
-	public void getImagePath() throws Exception {
-
+	public void getImagePath() {
+		Assert.assertTrue(user1.getImagePath() == "defaultPath");
 	}
 
 	@Test
-	public void setImagePath() throws Exception {
-
+	public void setImagePath() {
+		user1.setImagePath(altImage);
+		Assert.assertTrue(user1.getImagePath() == altImage);
 	}
 
 	@Test
-	public void addKweet() throws Exception {
-
+	public void addKweet() {
+		//Tested by kweet construction.
 	}
 
 	@Test
-	public void followUser() throws Exception {
-
+	public void followUser() {
+		//Used in setup
 	}
 
 }

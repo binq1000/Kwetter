@@ -27,6 +27,7 @@ public class User {
 		this.username = username;
 		this.details = details;
 		this.eMail = eMail;
+		this.imagePath = "defaultPath";
 
 		this.kweets = new ArrayList<Kweet>();
 		this.following = new ArrayList<User>();
@@ -34,7 +35,8 @@ public class User {
 	}
 
 	@PostConstruct
-	private void initLists() {
+	private void initUser() {
+		this.imagePath = "defaultPath";
 		this.kweets = new ArrayList<Kweet>();
 		this.following = new ArrayList<User>();
 		this.followers = new ArrayList<User>();
