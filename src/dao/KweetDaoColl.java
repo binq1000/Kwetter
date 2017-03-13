@@ -18,6 +18,8 @@ public class KweetDaoColl implements KweetDao {
 	@Override
 	public void addKweet(Kweet kweet) {
 		if (!kweets.contains(kweet)) {
+			Long id = new Long(kweets.size());
+			kweet.setId(id);
 			kweets.add(kweet);
 		}
 
