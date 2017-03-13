@@ -3,7 +3,7 @@ package domain;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +11,25 @@ import java.util.List;
  * Created by Nekkyou on 4-3-2017.
  */
 @Entity @Model
+@NamedQueries({
+		@NamedQuery(name = "user.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")
+})
+@Table(name = "Account")
 public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
 	private String username;
 	private String details;
 	private String eMail;
 	private String imagePath;
+
+	@OneToMany
 	private List<Kweet> kweets;
+	@OneToMany
 	private List<User> following;
+	@OneToMany
 	private List<User> followers;
 
 	public User() {

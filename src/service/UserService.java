@@ -1,5 +1,6 @@
 package service;
 
+import dao.JPA;
 import dao.UserDao;
 import domain.User;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  */
 @Stateless
 public class UserService {
-	@Inject
+	@Inject @JPA
 	private UserDao userDao;
 
 	public void addUser(User user) {

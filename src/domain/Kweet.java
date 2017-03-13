@@ -1,20 +1,25 @@
 package domain;
 
 import javax.enterprise.inject.Model;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by Nekkyou on 4-3-2017.
  */
 @Entity @Model
+@NamedQueries({
+		@NamedQuery(name = "kweet.findById", query = "SELECT k FROM Kweet k WHERE k.id = :id")
+})
+@Table(name = "Kweet")
 public class Kweet {
-	@Id	@GeneratedValue
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String message;
 	private Date datePosted;
+
+	@ManyToOne
 	private User poster;
 
 	public Kweet() {

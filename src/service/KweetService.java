@@ -1,5 +1,6 @@
 package service;
 
+import dao.JPA;
 import dao.KweetDao;
 import domain.Kweet;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  */
 @Stateless
 public class KweetService {
-	@Inject
+	@Inject @JPA
 	private KweetDao kweetDao;
 
 	public void addKweet(Kweet kweet) {

@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import service.KweetService;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import static org.junit.Assert.*;
@@ -12,12 +14,21 @@ import static org.junit.Assert.*;
 /**
  * Created by Nekkyou on 6-3-2017.
  */
+@Stateless
 public class KweetServiceTest {
 	@Inject
 	public KweetService service;
 
 	User user1, user2, user3, user4, user5;
+
 	Kweet kweet1, kweet2, kweet3, kweet4, kweet5;
+
+	@PostConstruct
+	private void init() {
+		if (service == null) {
+			throw new NullPointerException("service is null");
+		}
+	}
 
 	@Before
 	public void setUp() throws Exception {
