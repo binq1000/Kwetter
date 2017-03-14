@@ -22,13 +22,13 @@ public class UserRestTest {
 	public void setUp() throws Exception {
 		mapper = new ObjectMapper();
 
-		HttpUriRequest request = new HttpGet("localhost:8081/Kwetter_war_exploded/rest/users/add/123/asd/zc");
+		HttpUriRequest request = new HttpGet("localhost:8081/Kwetter_war_exploded/restController/users/add/123/asd/zc");
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
 	}
 
 	@Test
 	public void getAllUsers() throws IOException {
-		HttpUriRequest request = new HttpGet("localhost:8081/Kwetter_war_exploded/rest/users");
+		HttpUriRequest request = new HttpGet("localhost:8081/Kwetter_war_exploded/restController/users");
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
 
 		User resource = mapper.readValue(response.getEntity().getContent(), User.class);
@@ -36,7 +36,7 @@ public class UserRestTest {
 
 	@Test
 	public void findByUsername() throws IOException {
-		HttpUriRequest request = new HttpGet("localhost:8081/Kwetter_war_exploded/rest/users/123");
+		HttpUriRequest request = new HttpGet("localhost:8081/Kwetter_war_exploded/restController/users/123");
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
 
 		User resource = mapper.readValue(response.getEntity().getContent(), User.class);

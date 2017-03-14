@@ -1,4 +1,4 @@
-package rest;
+package restController;
 
 import domain.User;
 import service.UserService;
@@ -27,7 +27,7 @@ public class UserRest {
 
 	@GET
 	@Path("{username}")
-	public User findByUsername(@PathParam("username") String username) {
+	public User pathTest(@PathParam("username") String username) {
 		return service.findByName(username);
 	}
 

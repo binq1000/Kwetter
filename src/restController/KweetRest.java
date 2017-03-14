@@ -1,4 +1,4 @@
-package rest;
+package restController;
 
 import domain.Kweet;
 import domain.User;
