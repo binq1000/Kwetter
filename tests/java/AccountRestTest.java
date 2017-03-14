@@ -1,5 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-import domain.User;
+import domain.Account;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -9,13 +9,10 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
 /**
  * Created by Nekkyou on 13-3-2017.
  */
-public class UserRestTest {
+public class AccountRestTest {
 	ObjectMapper mapper;
 
 	@Before
@@ -31,7 +28,7 @@ public class UserRestTest {
 		HttpUriRequest request = new HttpGet("localhost:8081/Kwetter_war_exploded/restController/users");
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
 
-		User resource = mapper.readValue(response.getEntity().getContent(), User.class);
+		Account resource = mapper.readValue(response.getEntity().getContent(), Account.class);
 	}
 
 	@Test
@@ -39,7 +36,7 @@ public class UserRestTest {
 		HttpUriRequest request = new HttpGet("localhost:8081/Kwetter_war_exploded/restController/users/123");
 		HttpResponse response = HttpClientBuilder.create().build().execute(request);
 
-		User resource = mapper.readValue(response.getEntity().getContent(), User.class);
+		Account resource = mapper.readValue(response.getEntity().getContent(), Account.class);
 	}
 
 	@Test

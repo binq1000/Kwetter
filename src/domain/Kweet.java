@@ -20,12 +20,12 @@ public class Kweet {
 	private Date datePosted;
 
 	@ManyToOne
-	private User poster;
+	private Account poster;
 
 	public Kweet() {
 	}
 
-	public Kweet(String message, User poster) {
+	public Kweet(String message, Account poster) {
 		this.message = message;
 		this.poster = poster;
 		this.datePosted = new Date();
@@ -58,11 +58,11 @@ public class Kweet {
 		this.datePosted = datePosted;
 	}
 
-	public User getPoster() {
+	public Account getPoster() {
 		return poster;
 	}
 
-	public void setPoster(User poster) {
+	public void setPoster(Account poster) {
 		this.poster = poster;
 	}
 

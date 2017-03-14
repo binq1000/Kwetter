@@ -1,6 +1,6 @@
 package dao;
 
-import domain.User;
+import domain.Account;
 
 import java.util.ArrayList;
 
@@ -8,12 +8,16 @@ import java.util.ArrayList;
  * Created by Nekkyou on 6-3-2017.
  */
 public interface UserDao {
-	void addUser(User user);
+	void addUser(Account account);
 
-	void removeUser(User user);
+	void removeUser(Account account);
 
-	User findByName(String username);
+	Account findByName(String username);
 
-	ArrayList<User> getUsers();
+	void followUser(Account account, Account accountToFollow);
+
+	void unfollowUser(Account account, Account accountToUnfollow);
+
+	ArrayList<Account> getAccounts();
 
 }

@@ -1,7 +1,7 @@
 package restController;
 
 import domain.Kweet;
-import domain.User;
+import domain.Account;
 import service.KweetService;
 import service.UserService;
 
@@ -36,6 +36,12 @@ public class KweetRest {
 	}
 
 	@GET
+	@Path("user/{username}")
+	public ArrayList<Kweet> getKweetsFromUser(@PathParam("username") String username) {
+		return new ArrayList<Kweet>(userService.findByName(username).getKweets());
+	}
+
+	@GET
 	@Path("delete/{username}/{id}")
 	public void deleteKweet(@PathParam("username") String username, @PathParam("id") long id) {
 		Kweet kweet = service.findById(id);
@@ -48,8 +54,8 @@ public class KweetRest {
 	@GET
 	@Path("add/{username}/{message}")
 	public void addKweet(@PathParam("username") String username, @PathParam("message") String message) {
-		User user = userService.findByName(username);
-		Kweet kweet = new Kweet(message, user);
+		Account account = userService.findByName(username);
+		Kweet kweet = new Kweet(message, account);
 		service.addKweet(kweet);
 	}
 

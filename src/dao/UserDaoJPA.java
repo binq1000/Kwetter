@@ -1,6 +1,6 @@
 package dao;
 
-import domain.User;
+import domain.Account;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -20,27 +20,39 @@ public class UserDaoJPA implements UserDao{
 	private EntityManager em;
 
 	@Override
-	public void addUser(User user) {
-		em.persist(user);
+	public void addUser(Account account) {
+		em.persist(account);
 	}
 
 	@Override
-	public void removeUser(User user) {
-		em.remove(em.merge(user));
+	public void removeUser(Account account) {
+		em.remove(em.merge(account));
 	}
 
 	@Override
-	public User findByName(String username) {
-		TypedQuery<User> query = em.createNamedQuery("user.findByUsername", User.class);
+	public Account findByName(String username) {
+		TypedQuery<Account> query = em.createNamedQuery("user.findByUsername", Account.class);
 		query.setParameter("username", username);
-		List<User> result = query.getResultList();
+		List<Account> result = query.getResultList();
 
 		return result.get(0);
 	}
 
 	@Override
-	public ArrayList<User> getUsers() {
-		Query query = em.createQuery("SELECT u FROM User u");
-		return  new ArrayList<User>(query.getResultList());
+	public void followUser(Account account, Account accountToFollow) {
+		if (account != null && accountToFollow != null) {
+			account.followUser(accountToFollow);
+		}
+	}
+
+	@Override
+	public void unfollowUser(Account account, Account accountToUnfollow) {
+		account.unfollowUser(accountToUnfollow);
+		em.persist(account);
+	}
+
+	public ArrayList<Account> getAccounts() {
+		Query query = em.createQuery("SELECT u FROM Account u");
+		return  new ArrayList<Account>(query.getResultList());
 	}
 }

@@ -1,6 +1,6 @@
 package restController;
 
-import domain.User;
+import domain.Account;
 import service.UserService;
 
 import javax.ejb.Stateless;
@@ -21,27 +21,51 @@ public class UserRest {
 	UserService service;
 
 	@GET
-	public ArrayList<User> getAllUsers() {
+	public ArrayList<Account> getAllUsers() {
 		return service.getUsers();
 	}
 
 	@GET
 	@Path("{username}")
-	public User pathTest(@PathParam("username") String username) {
+	public Account pathTest(@PathParam("username") String username) {
 		return service.findByName(username);
 	}
 
 	@GET
 	@Path("delete/{username}")
 	public void removeUser(@PathParam("username") String username) {
-		User user = service.findByName(username);
-		service.removeUser(user);
+		Account account = service.findByName(username);
+		service.removeUser(account);
 	}
 
 	@GET
 	@Path("add/{username}/{details}/{email}")
-	public void addUser(@PathParam("username") String username, @PathParam("details") String details, @PathParam("email") String email) {
-		User user = new User(username, details, email);
-		service.addUser(user);
+	public Account addUser(@PathParam("username") String username, @PathParam("details") String details, @PathParam("email") String email) {
+		Account account = new Account(username, details, email);
+		service.addUser(account);
+		return account;
+	}
+
+	@POST
+	@Path("follow/{username}/{otherUsername}")
+	public void followUser(@PathParam("username") String username, @PathParam("otherUsername") String otherUsername) {
+		Account account = service.findByName(username);
+		Account accountToFollow = service.findByName(otherUsername);
+		service.followUser(account, accountToFollow);
+	}
+
+	@POST
+	@Path("unfollow/{username}/{otherUsername}")
+	public void unfollowUser(@PathParam("username") String username, @PathParam("otherUsername") String otherUsername) {
+		Account account = service.findByName(username);
+		Account accountToFollow = service.findByName(otherUsername);
+		service.unfollowUser(account, accountToFollow);
+	}
+
+	@GET
+	@Path("followers/{username}")
+	public ArrayList<Account> getFollowers(@PathParam("username") String username) {
+		Account account = service.findByName(username);
+		return new ArrayList<Account>(account.getFollowing());
 	}
 }

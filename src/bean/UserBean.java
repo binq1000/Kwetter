@@ -1,6 +1,6 @@
 package bean;
 
-import domain.User;
+import domain.Account;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -14,9 +14,9 @@ import java.io.Serializable;
 @RequestScoped
 public class UserBean implements Serializable {
 	@Inject
-	private User user;
+	private Account account;
 
-	public User getUser() {
-		return user;
+	public Account getAccount() {
+		return account;
 	}
 }

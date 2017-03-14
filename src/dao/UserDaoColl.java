@@ -1,6 +1,6 @@
 package dao;
 
-import domain.User;
+import domain.Account;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
@@ -12,34 +12,43 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 @Stateless @Default
 public class UserDaoColl implements UserDao {
-	CopyOnWriteArrayList<User> users = new CopyOnWriteArrayList<User>();
+	CopyOnWriteArrayList<Account> accounts = new CopyOnWriteArrayList<Account>();
 
 	@Override
-	public void addUser(User user) {
-		if (!users.contains(user)) {
-			users.add(user);
+	public void addUser(Account account) {
+		if (!accounts.contains(account)) {
+			accounts.add(account);
 		}
 	}
 
 	@Override
-	public void removeUser(User user) {
-		if (users.contains(user)) {
-			users.remove(user);
+	public void removeUser(Account account) {
+		if (accounts.contains(account)) {
+			accounts.remove(account);
 		}
 	}
 
 	@Override
-	public User findByName(String username) {
-		for (User user : users) {
-			if (user.getUsername().contentEquals(username)) {
-				return user;
+	public Account findByName(String username) {
+		for (Account account : accounts) {
+			if (account.getUsername().contentEquals(username)) {
+				return account;
 			}
 		}
 		return null;
 	}
 
 	@Override
-	public ArrayList<User> getUsers() {
-		return new ArrayList<User>(users);
+	public void followUser(Account account, Account accountToFollow) {
+		account.followUser(accountToFollow);
+	}
+
+	@Override
+	public void unfollowUser(Account account, Account accountToUnfollow) {
+		account.unfollowUser(accountToUnfollow);
+	}
+
+	public ArrayList<Account> getAccounts() {
+		return new ArrayList<Account>(accounts);
 	}
 }

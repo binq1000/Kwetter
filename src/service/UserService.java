@@ -2,7 +2,7 @@ package service;
 
 import dao.JPA;
 import dao.UserDao;
-import domain.User;
+import domain.Account;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -16,20 +16,28 @@ public class UserService {
 	@Inject @JPA
 	private UserDao userDao;
 
-	public void addUser(User user) {
-		userDao.addUser(user);
+	public void addUser(Account account) {
+		userDao.addUser(account);
 	}
 
-	public void removeUser(User user) {
-		userDao.removeUser(user);
+	public void removeUser(Account account) {
+		userDao.removeUser(account);
 	}
 
-	public ArrayList<User> getUsers() {
-		return userDao.getUsers();
+	public ArrayList<Account> getUsers() {
+		return userDao.getAccounts();
 	}
 
-	public User findByName(String name){
+	public Account findByName(String name){
 		return userDao.findByName(name);
+	}
+
+	public void followUser(Account account, Account accountToFollow) {
+		userDao.followUser(account, accountToFollow);
+	}
+
+	public void unfollowUser(Account account, Account accountToUnfollow) {
+		userDao.unfollowUser(account, accountToUnfollow);
 	}
 
 	public UserService() {
