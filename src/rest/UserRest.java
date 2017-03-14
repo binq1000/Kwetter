@@ -1,14 +1,12 @@
-package Rest;
+package rest;
 
 import domain.User;
 import service.UserService;
 
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 
 /**
@@ -29,7 +27,7 @@ public class UserRest {
 
 	@GET
 	@Path("{username}")
-	public User pathTest(@PathParam("username") String username) {
+	public User findByUsername(@PathParam("username") String username) {
 		return service.findByName(username);
 	}
 
