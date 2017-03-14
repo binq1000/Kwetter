@@ -1,7 +1,7 @@
 package restController;
 
 import domain.Account;
-import service.UserService;
+import service.AccountService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -18,11 +18,11 @@ import java.util.ArrayList;
 public class UserRest {
 
 	@Inject
-	UserService service;
+	AccountService service;
 
 	@GET
 	public ArrayList<Account> getAllUsers() {
-		return service.getUsers();
+		return service.getAccounts();
 	}
 
 	@GET

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Created by Nekkyou on 6-3-2017.
  */
 @Stateless
-public class UserService {
+public class AccountService {
 	@Inject @JPA
 	private UserDao userDao;
 
@@ -24,7 +24,7 @@ public class UserService {
 		userDao.removeUser(account);
 	}
 
-	public ArrayList<Account> getUsers() {
+	public ArrayList<Account> getAccounts() {
 		return userDao.getAccounts();
 	}
 
@@ -40,8 +40,13 @@ public class UserService {
 		userDao.unfollowUser(account, accountToUnfollow);
 	}
 
-	public UserService() {
+	public AccountService() {
 
+	}
+
+	///  I Think it's terrible to create extra code for testing, but its needed. . .
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
 	}
 
 }

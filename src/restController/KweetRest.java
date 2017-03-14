@@ -3,7 +3,7 @@ package restController;
 import domain.Kweet;
 import domain.Account;
 import service.KweetService;
-import service.UserService;
+import service.AccountService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -22,7 +22,7 @@ public class KweetRest {
 	KweetService service;
 
 	@Inject
-	UserService userService;
+	AccountService accountService;
 
 	@GET
 	public ArrayList<Kweet> getAllKweets() {
@@ -38,7 +38,7 @@ public class KweetRest {
 	@GET
 	@Path("user/{username}")
 	public ArrayList<Kweet> getKweetsFromUser(@PathParam("username") String username) {
-		return new ArrayList<Kweet>(userService.findByName(username).getKweets());
+		return new ArrayList<Kweet>(accountService.findByName(username).getKweets());
 	}
 
 	@GET
@@ -54,7 +54,7 @@ public class KweetRest {
 	@GET
 	@Path("add/{username}/{message}")
 	public void addKweet(@PathParam("username") String username, @PathParam("message") String message) {
-		Account account = userService.findByName(username);
+		Account account = accountService.findByName(username);
 		Kweet kweet = new Kweet(message, account);
 		service.addKweet(kweet);
 	}

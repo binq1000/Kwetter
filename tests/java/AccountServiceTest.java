@@ -3,7 +3,7 @@ import domain.Account;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import service.UserService;
+import service.AccountService;
 
 import javax.inject.Inject;
 
@@ -12,7 +12,7 @@ import javax.inject.Inject;
  */
 public class AccountServiceTest {
 	@Inject
-	UserService service;
+	AccountService service;
 
 	Account account1, account2, account3, account4, account5;
 	Kweet kweet1, kweet2, kweet3, kweet4, kweet5;
@@ -34,28 +34,28 @@ public class AccountServiceTest {
 
 	@Test
 	public void addUser() {
-		Assert.assertTrue(service.getUsers().isEmpty());
+		Assert.assertTrue(service.getAccounts().isEmpty());
 		service.addUser(account1);
-		Assert.assertTrue(service.getUsers().size() == 1);
+		Assert.assertTrue(service.getAccounts().size() == 1);
 	}
 
 	@Test
 	public void addDupplicateUser() {
-		Assert.assertTrue(service.getUsers().size() == 0);
+		Assert.assertTrue(service.getAccounts().size() == 0);
 		service.addUser(account1);
-		Assert.assertTrue(service.getUsers().size() == 1);
+		Assert.assertTrue(service.getAccounts().size() == 1);
 		service.addUser(account1);
-		Assert.assertTrue(service.getUsers().size() == 1);
+		Assert.assertTrue(service.getAccounts().size() == 1);
 	}
 
 	@Test
 	public void removeUser() {
 		service.addUser(account1);
-		Assert.assertTrue(service.getUsers().size() == 1);
+		Assert.assertTrue(service.getAccounts().size() == 1);
 		service.removeUser(account1);
-		Assert.assertTrue(service.getUsers().isEmpty());
+		Assert.assertTrue(service.getAccounts().isEmpty());
 		service.removeUser(account1);
-		Assert.assertTrue(service.getUsers().isEmpty());
+		Assert.assertTrue(service.getAccounts().isEmpty());
 	}
 
 	@Test
@@ -67,11 +67,11 @@ public class AccountServiceTest {
 
 	@Test
 	public void getUsers() {
-		Assert.assertTrue(service.getUsers().isEmpty());
+		Assert.assertTrue(service.getAccounts().isEmpty());
 		service.addUser(account1);
-		Assert.assertTrue(service.getUsers().size() == 1);
+		Assert.assertTrue(service.getAccounts().size() == 1);
 		service.addUser(account2);
-		Assert.assertTrue(service.getUsers().size() == 2);
+		Assert.assertTrue(service.getAccounts().size() == 2);
 	}
 
 }
