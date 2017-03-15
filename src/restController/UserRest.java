@@ -63,7 +63,7 @@ public class UserRest {
 	}
 
 	@GET
-	@Path("followers/{username}")
+	@Path("{username}/followers")
 	public ArrayList<Account> getFollowers(@PathParam("username") String username) {
 		Account account = service.findByName(username);
 		return new ArrayList<Account>(account.getFollowing());
