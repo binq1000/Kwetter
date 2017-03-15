@@ -93,19 +93,20 @@ public class AccountTest {
 	}
 
 	@Test
-	public void addKweet() {
-		//Tested by kweet construction.
-	}
-
-	@Test
 	public void followUser() {
 		//Used in setup
+		account4.followUser(account5);
 
+		Assert.assertEquals(1, account4.getFollowing().size());
 	}
 
 	@Test
 	public void unfollowUser() {
+		account4.followUser(account5);
+		Assert.assertEquals(1, account4.getFollowing().size());
 
+		account4.unfollowUser(account5);
+		Assert.assertEquals(0, account4.getFollowing().size());
 	}
 
 }

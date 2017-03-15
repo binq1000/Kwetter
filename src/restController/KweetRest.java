@@ -41,17 +41,15 @@ public class KweetRest {
 		return new ArrayList<Kweet>(accountService.findByName(username).getKweets());
 	}
 
-	@GET
-	@Path("delete/{username}/{id}")
-	public void deleteKweet(@PathParam("username") String username, @PathParam("id") long id) {
+	@DELETE
+	@Path("{id}/delete")
+	public void deleteKweet(@PathParam("id") long id) {
 		Kweet kweet = service.findById(id);
-		if (kweet.getPoster().getUsername().equals(username)) {
-			service.removeKweet(kweet);
-		}
+		service.removeKweet(kweet);
 	}
 
 
-	@GET
+	@POST
 	@Path("add/{username}/{message}")
 	public void addKweet(@PathParam("username") String username, @PathParam("message") String message) {
 		Account account = accountService.findByName(username);

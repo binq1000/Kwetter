@@ -31,8 +31,8 @@ public class UserRest {
 		return service.findByName(username);
 	}
 
-	@GET
-	@Path("delete/{username}")
+	@DELETE
+	@Path("{username}/delete")
 	public void removeUser(@PathParam("username") String username) {
 		Account account = service.findByName(username);
 		service.removeUser(account);

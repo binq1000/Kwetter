@@ -68,5 +68,16 @@ public class Kweet {
 
 	//endregion
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Kweet)) {
+			return false;
+		}
+		Kweet other = (Kweet) o;
+		if (this.poster.equals(other.poster) && this.message.equals(other.message)) {
+			return true;
+		}
 
+		return false;
+	}
 }

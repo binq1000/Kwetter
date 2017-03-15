@@ -144,4 +144,21 @@ public class Account {
 		}
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Account)) {
+			return false;
+		}
+		Account other = (Account) o;
+		if (this.username.equals(other.username) && this.details.equals(other.details) && this.eMail.equals(other.eMail)) {
+			return true;
+		}
+
+		return false;
+	}
+
+
+
+
+
 }

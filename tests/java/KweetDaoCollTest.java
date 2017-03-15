@@ -2,6 +2,7 @@ import dao.KweetDao;
 import dao.KweetDaoColl;
 import domain.Account;
 import domain.Kweet;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,22 +31,32 @@ public class KweetDaoCollTest {
 
 	@Test
 	public void addKweet() {
-
+		kweetDao.addKweet(kweet1);
+		Assert.assertTrue(kweetDao.getKweets().size() == 1);
 	}
 
 	@Test
 	public void removeKweet() {
+		Assert.assertTrue(kweetDao.getKweets().size() == 0);
 
+		kweetDao.addKweet(kweet1);
+		Assert.assertTrue(kweetDao.getKweets().size() == 1);
+
+		kweetDao.removeKweet(kweet1);
+		Assert.assertTrue(kweetDao.getKweets().size() == 0);
 	}
 
 	@Test
 	public void findById() {
+		kweetDao.addKweet(kweet1);
 
+		Assert.assertEquals(kweetDao.findById(kweet1.getId()), kweet1);
 	}
 
 	@Test
 	public void getKweets() {
-
+		kweetDao.addKweet(kweet1);
+		Assert.assertTrue(kweetDao.getKweets().size() == 1);
 	}
 
 }
