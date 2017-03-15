@@ -1,5 +1,3 @@
-package service;
-
 import dao.UserDao;
 import domain.Account;
 import org.junit.Assert;
@@ -8,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import service.AccountService;
 
 import java.util.ArrayList;
 

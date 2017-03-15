@@ -1,5 +1,6 @@
 package dao;
 
+import Exceptions.UserAlreadyExistsException;
 import domain.Account;
 
 import javax.ejb.Stateless;
@@ -20,8 +21,14 @@ public class UserDaoJPA implements UserDao{
 	private EntityManager em;
 
 	@Override
-	public void addUser(Account account) {
-		em.persist(account);
+	public void addUser(Account account) throws UserAlreadyExistsException {
+		try {
+			em.persist(account);
+		}
+		catch (Exception ex) {
+			throw new UserAlreadyExistsException("User already exists");
+		}
+
 	}
 
 	@Override

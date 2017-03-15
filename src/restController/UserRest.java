@@ -1,5 +1,6 @@
 package restController;
 
+import Exceptions.UserAlreadyExistsException;
 import domain.Account;
 import service.AccountService;
 
@@ -40,10 +41,18 @@ public class UserRest {
 
 	@GET
 	@Path("add/{username}/{details}/{email}")
-	public Account addUser(@PathParam("username") String username, @PathParam("details") String details, @PathParam("email") String email) {
+	public Account addUser(@PathParam("username") String username, @PathParam("details") String details, @PathParam("email") String email) throws Exception {
 		Account account = new Account(username, details, email);
-		service.addUser(account);
-		return account;
+		try {
+			service.addUser(account);
+			return account;
+		} catch (UserAlreadyExistsException uae) {
+			throw uae;
+		}
+		catch (Exception ex) {
+			throw ex;
+		}
+
 	}
 
 	@POST

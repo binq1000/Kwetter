@@ -1,3 +1,4 @@
+import Exceptions.UserAlreadyExistsException;
 import domain.Kweet;
 import domain.Account;
 import org.junit.Assert;
@@ -33,14 +34,14 @@ public class AccountServiceTest {
 	}
 
 	@Test
-	public void addUser() {
+	public void addUser() throws UserAlreadyExistsException {
 		Assert.assertTrue(service.getAccounts().isEmpty());
 		service.addUser(account1);
 		Assert.assertTrue(service.getAccounts().size() == 1);
 	}
 
 	@Test
-	public void addDupplicateUser() {
+	public void addDupplicateUser() throws UserAlreadyExistsException {
 		Assert.assertTrue(service.getAccounts().size() == 0);
 		service.addUser(account1);
 		Assert.assertTrue(service.getAccounts().size() == 1);
@@ -49,7 +50,7 @@ public class AccountServiceTest {
 	}
 
 	@Test
-	public void removeUser() {
+	public void removeUser() throws UserAlreadyExistsException {
 		service.addUser(account1);
 		Assert.assertTrue(service.getAccounts().size() == 1);
 		service.removeUser(account1);
@@ -59,14 +60,14 @@ public class AccountServiceTest {
 	}
 
 	@Test
-	public void findByName() {
+	public void findByName() throws UserAlreadyExistsException {
 		Assert.assertTrue(service.findByName("randomUsername") == null);
 		service.addUser(account1);
 		Assert.assertTrue(service.findByName("UN1") == account1);
 	}
 
 	@Test
-	public void getUsers() {
+	public void getUsers() throws UserAlreadyExistsException {
 		Assert.assertTrue(service.getAccounts().isEmpty());
 		service.addUser(account1);
 		Assert.assertTrue(service.getAccounts().size() == 1);

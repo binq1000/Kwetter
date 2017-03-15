@@ -1,5 +1,6 @@
 package service;
 
+import Exceptions.UserAlreadyExistsException;
 import dao.JPA;
 import dao.UserDao;
 import domain.Account;
@@ -16,8 +17,14 @@ public class AccountService {
 	@Inject @JPA
 	private UserDao userDao;
 
-	public void addUser(Account account) {
-		userDao.addUser(account);
+	public void addUser(Account account) throws UserAlreadyExistsException {
+		try {
+			userDao.addUser(account);
+		}
+		catch (Exception ex) {
+			//TODO log exception with interceptor
+			throw new UserAlreadyExistsException("Exception when trying to create a user", ex);
+		}
 	}
 
 	public void removeUser(Account account) {

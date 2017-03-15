@@ -1,3 +1,4 @@
+import Exceptions.UserAlreadyExistsException;
 import dao.UserDao;
 import dao.UserDaoColl;
 import domain.Account;
@@ -30,14 +31,14 @@ public class AccountDaoCollTest {
 	}
 
 	@Test
-	public void addUser() {
+	public void addUser() throws UserAlreadyExistsException {
 		Assert.assertTrue(userDao.getAccounts().isEmpty());
 		userDao.addUser(account1);
 		Assert.assertTrue(userDao.getAccounts().size() == 1);
 	}
 
 	@Test
-	public void addDupplicateUser() {
+	public void addDupplicateUser() throws UserAlreadyExistsException {
 		Assert.assertTrue(userDao.getAccounts().size() == 0);
 		userDao.addUser(account1);
 		Assert.assertTrue(userDao.getAccounts().size() == 1);
@@ -46,7 +47,7 @@ public class AccountDaoCollTest {
 	}
 
 	@Test
-	public void removeUser() {
+	public void removeUser() throws UserAlreadyExistsException {
 		userDao.addUser(account1);
 		Assert.assertTrue(userDao.getAccounts().size() == 1);
 		userDao.removeUser(account1);
@@ -56,14 +57,14 @@ public class AccountDaoCollTest {
 	}
 
 	@Test
-	public void findByName() {
+	public void findByName() throws UserAlreadyExistsException {
 		Assert.assertTrue(userDao.findByName("randomUsername") == null);
 		userDao.addUser(account1);
 		Assert.assertTrue(userDao.findByName("UN1") == account1);
 	}
 
 	@Test
-	public void getUsers() {
+	public void getUsers() throws UserAlreadyExistsException {
 		Assert.assertTrue(userDao.getAccounts().isEmpty());
 		userDao.addUser(account1);
 		Assert.assertTrue(userDao.getAccounts().size() == 1);

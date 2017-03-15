@@ -4,6 +4,8 @@ package domain;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  * Created by Nekkyou on 4-3-2017.
  */
 @Entity @Model
+@XmlRootElement
 @NamedQueries({
 		@NamedQuery(name = "user.findByUsername", query = "SELECT a FROM Account a WHERE a.username = :username"),
 		@NamedQuery(name = "user.getFollowing", query = "SELECT a FROM Account a where :id in (select f.id from a.following f)")
@@ -26,6 +29,9 @@ public class Account {
 	private String eMail;
 	private String imagePath;
 
+	@Column(nullable = false)
+	private String password;
+
 	@OneToMany
 	private List<Kweet> kweets;
 
@@ -36,6 +42,10 @@ public class Account {
 	@OneToMany
 	@JoinTable(name = "Account_Followers")
 	private List<Account> followers;
+
+	@ManyToMany(mappedBy = "accounts")
+	private List<AccountGroup> groups;
+
 
 	public Account() {
 	}
@@ -99,6 +109,15 @@ public class Account {
 
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+
+	@XmlTransient
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	//endregion
