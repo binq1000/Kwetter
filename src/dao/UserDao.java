@@ -1,6 +1,6 @@
 package dao;
 
-import Exceptions.UserAlreadyExistsException;
+import exceptionsCustom.UserAlreadyExistsException;
 import domain.Account;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptionsCustom;
 
 /**
  * Created by Nekkyou on 15-3-2017.

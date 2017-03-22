@@ -1,4 +1,4 @@
-import Exceptions.UserAlreadyExistsException;
+import exceptionsCustom.UserAlreadyExistsException;
 import dao.UserDao;
 import dao.UserDaoColl;
 import domain.Account;

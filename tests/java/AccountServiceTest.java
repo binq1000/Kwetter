@@ -1,4 +1,4 @@
-import Exceptions.UserAlreadyExistsException;
+import exceptionsCustom.UserAlreadyExistsException;
 import domain.Kweet;
 import domain.Account;
 import org.junit.Assert;

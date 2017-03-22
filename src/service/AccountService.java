@@ -1,6 +1,6 @@
 package service;
 
-import Exceptions.UserAlreadyExistsException;
+import exceptionsCustom.UserAlreadyExistsException;
 import dao.JPA;
 import dao.UserDao;
 import domain.Account;

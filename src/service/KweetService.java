@@ -1,11 +1,14 @@
 package service;
 
+
 import dao.JPA;
 import dao.KweetDao;
 import domain.Kweet;
+import interceptorClasses.VolgTrendInterceptor;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.interceptor.Interceptors;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +19,7 @@ public class KweetService {
 	@Inject @JPA
 	private KweetDao kweetDao;
 
+	@Interceptors(VolgTrendInterceptor.class)
 	public void addKweet(Kweet kweet) {
 		kweetDao.addKweet(kweet);
 	}
