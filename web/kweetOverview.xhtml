@@ -14,6 +14,14 @@
     <title>TEST TITLE</title>
 </h:head>
 <h:body class="container">
-    <h1>test</h1>
+    <h:form>
+
+        <h:panelGrid columns="1" cellpadding="5">
+            <h:outputText value="#{batchBean.jobStatusString}" />
+            <h:commandButton value="Start User import Job" action="#{batchBean.startUserImport()}" rendered="#{batchBean.jobStatusString==batchBean.NOTSTARTED}"></h:commandButton>
+            <h:commandButton value="Check Status" action="batch" rendered="#{batchBean.completed==false}"></h:commandButton>
+        </h:panelGrid>
+
+    </h:form>
 </h:body>
 </html>

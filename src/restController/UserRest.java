@@ -33,7 +33,7 @@ public class UserRest {
 	}
 
 	@DELETE
-	@Path("{username}/delete")
+	@Path("{username}")
 	public void removeUser(@PathParam("username") String username) {
 		Account account = service.findByName(username);
 		service.removeUser(account);

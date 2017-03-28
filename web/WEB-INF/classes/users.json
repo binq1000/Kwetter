@@ -1,0 +1,50 @@
+{"Accounts":[
+    {
+        "details": "a",
+        "eMail": "a",
+        "imagePath": "a",
+        "username": "a"
+    },
+    {
+        "details": "b",
+        "eMail": "b",
+        "imagePath": "b",
+        "username": "b"
+    },
+    {
+        "details": "c",
+        "eMail": "c",
+        "imagePath": "c",
+        "username": "c"
+    },
+    {
+        "details": "d",
+        "eMail": "d",
+        "imagePath": "d",
+        "username": "d"
+    },
+    {
+        "details": "e",
+        "eMail": "e",
+        "imagePath": "e",
+        "username": "e"
+    },
+    {
+        "details": "f",
+        "eMail": "f",
+        "imagePath": "f",
+        "username": "f"
+    },
+    {
+        "details": "g",
+        "eMail": "g",
+        "imagePath": "g",
+        "username": "g"
+    },
+    {
+        "details": "h",
+        "eMail": "h",
+        "imagePath": "h",
+        "username": "h"
+    }
+]}

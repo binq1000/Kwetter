@@ -23,6 +23,7 @@ public class UserDaoJPA implements UserDao{
 	@Override
 	public void addUser(Account account) throws UserAlreadyExistsException {
 		try {
+			System.out.println("Persisting account: " + account.getUsername());
 			em.persist(account);
 		}
 		catch (Exception ex) {

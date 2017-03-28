@@ -1,0 +1,14 @@
+<job id="kweetimport" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+
+    <properties>
+        <property name="input_file" value="kweets.json"/>
+    </properties>
+
+    <step id="myStep">
+        <chunk item-count="5">
+            <reader ref="KweetReader"></reader>
+            <processor ref="KweetProcessor"/>
+            <writer ref="KweetWriter"></writer>
+        </chunk>
+    </step>
+</job>

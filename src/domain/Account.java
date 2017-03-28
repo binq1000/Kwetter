@@ -61,6 +61,17 @@ public class Account {
 		this.followers = new ArrayList<Account>();
 	}
 
+	public Account(String username, String details, String eMail, String imagePath) {
+		this.username = username;
+		this.details = details;
+		this.eMail = eMail;
+		this.imagePath = imagePath;
+
+		this.kweets = new ArrayList<Kweet>();
+		this.following = new ArrayList<Account>();
+		this.followers = new ArrayList<Account>();
+	}
+
 	@PostConstruct
 	private void initUser() {
 		this.username = "default";

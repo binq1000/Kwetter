@@ -1,0 +1,90 @@
+{"kweets":[
+    {
+        "datePosted": "2017-03-22T10:15:49.919+01:00",
+        "id": 1,
+        "message": "import Message",
+        "poster": {
+            "details": "qwas",
+            "eMail": "asdqwe",
+            "imagePath": "defaultPath",
+            "username": "123"
+        }
+    },
+    {
+        "datePosted": "2017-03-22T10:16:19.146+01:00",
+        "id": 2,
+        "message": "import Message 1",
+        "poster": {
+            "details": "qwas",
+            "eMail": "asdqwe",
+            "imagePath": "defaultPath",
+            "username": "123"
+        }
+    },
+    {
+        "datePosted": "2017-03-22T10:20:36.505+01:00",
+        "id": 3,
+        "message": "import Message 2",
+        "poster": {
+            "details": "qwas",
+            "eMail": "asdqwe",
+            "imagePath": "defaultPath",
+            "username": "123"
+        }
+    },
+    {
+        "datePosted": "2017-03-22T10:22:16.019+01:00",
+        "id": 4,
+        "message": "import Message 3",
+        "poster": {
+            "details": "qwas",
+            "eMail": "asdqwe",
+            "imagePath": "defaultPath",
+            "username": "123"
+        }
+    },
+    {
+        "datePosted": "2017-03-22T10:25:39.936+01:00",
+        "id": 5,
+        "message": "import Message 4",
+        "poster": {
+            "details": "qwas",
+            "eMail": "asdqwe",
+            "imagePath": "defaultPath",
+            "username": "123"
+        }
+    },
+    {
+        "datePosted": "2017-03-22T10:26:54.127+01:00",
+        "id": 6,
+        "message": "import Message 5",
+        "poster": {
+            "details": "qwas",
+            "eMail": "asdqwe",
+            "imagePath": "defaultPath",
+            "username": "123"
+        }
+    },
+    {
+        "datePosted": "2017-03-22T10:28:46.061+01:00",
+        "id": 7,
+        "message": "import Message 6",
+        "poster": {
+            "details": "qwas",
+            "eMail": "asdqwe",
+            "imagePath": "defaultPath",
+            "username": "123"
+        }
+    },
+    {
+        "datePosted": "2017-03-22T10:49:10.796+01:00",
+        "id": 8,
+        "message": "import Message 7",
+        "poster": {
+            "details": "qwas",
+            "eMail": "asdqwe",
+            "imagePath": "defaultPath",
+            "username": "123"
+        }
+    }
+]}
