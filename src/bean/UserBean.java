@@ -2,11 +2,15 @@ package bean;
 
 import domain.Account;
 import domain.Kweet;
+import service.AccountService;
 import service.KweetService;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.ws.rs.POST;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -16,9 +20,18 @@ import java.util.ArrayList;
 @Named(value = "userBean")
 @RequestScoped
 public class UserBean implements Serializable {
-	private KweetService service = new KweetService();
+	private AccountService service = new AccountService();
+	private String username = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+
+	public UserBean() {
+		//currentAccount = service.findByName(username);
+	}
 
 	public String getString() {
-		return "String";
+		return service.toString();
+	}
+
+	public String getUser() {
+		return username;
 	}
 }

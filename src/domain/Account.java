@@ -22,6 +22,7 @@ public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	@Column(unique = true)
 	private String username;
 
@@ -32,14 +33,14 @@ public class Account {
 	@Column(nullable = false)
 	private String password;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Kweet> kweets;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "Account_Following")
 	private List<Account> following;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "Account_Followers")
 	private List<Account> followers;
 

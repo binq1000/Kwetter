@@ -8,13 +8,43 @@
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="javascript"/>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"  type="javascript"/>
-    <title>STUDENTEN</title>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="default.css"/>
+    <h:outputScript library="js" name="bootstrap.min.js"/>
+    <title>User</title>
 </h:head>
 <h:body class="container">
-    <h1>test</h1>
-    <h:outputLabel value="#{userBean.getString()}"/>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Kwetter</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" placeholder="Username" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-success">Sign in</button>
+                </form>
+            </div><!--/.navbar-collapse -->
+        </div>
+    </nav>
+
+    <div class="container topmargin">
+        <!-- Example row of columns -->
+        <div class="container">
+            <h1><h:outputLabel value="Welcome #{userBean.getUser()}"/></h1>
+        </div>
+    </div>
 </h:body>
 </html>

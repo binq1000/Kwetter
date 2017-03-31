@@ -5,8 +5,11 @@ import dao.JPA;
 import dao.KweetDao;
 import domain.Kweet;
 import interceptorClasses.VolgTrendInterceptor;
+import optionalEvents.AddKweetEvent;
 
 import javax.ejb.Stateless;
+import javax.enterprise.event.Event;
+import javax.enterprise.inject.Any;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 import java.util.ArrayList;
@@ -19,9 +22,14 @@ public class KweetService {
 	@Inject @JPA
 	private KweetDao kweetDao;
 
+	@Inject
+	private Event<AddKweetEvent> event;
+
 	@Interceptors(VolgTrendInterceptor.class)
 	public void addKweet(Kweet kweet) {
-		kweetDao.addKweet(kweet);
+		AddKweetEvent kweetEvent = new AddKweetEvent(kweet, kweetDao);
+		event.fire(kweetEvent);
+		//kweetDao.addKweet(kweet);
 	}
 
 	public void removeKweet(Kweet kweet) {

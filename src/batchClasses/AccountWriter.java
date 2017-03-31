@@ -36,8 +36,6 @@ public class AccountWriter implements ItemWriter {
 			if (item != null) {
 				Account account = (Account) item;
 				service.addUser(account);
-
-				int size = service.getAccounts().size();
 			}
 		}
 	}
