@@ -1,0 +1,2 @@
+# Kwetter
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0d4c38d3e1794922b232642663728087)](https://www.codacy.com/app/binq1000/Kwetter?utm_source=github.com&utm_medium=referral&utm_content=binq1000/Kwetter&utm_campaign=badger)
