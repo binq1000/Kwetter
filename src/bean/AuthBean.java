@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 
 /**
@@ -28,5 +29,14 @@ public class AuthBean {
 			}
 		}
 		return account;
+	}
+
+	public String logout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return null;
+	}
+
+	public Account getAccountFromName(String username) {
+		return service.findByName(username);
 	}
 }

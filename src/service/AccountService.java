@@ -36,7 +36,8 @@ public class AccountService {
 	}
 
 	public Account findByName(String name){
-		return userDao.findByName(name);
+		Account account = userDao.findByName(name);
+		return account;
 	}
 
 	public void followUser(Account account, Account accountToFollow) {

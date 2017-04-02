@@ -33,6 +33,13 @@ public class Kweet {
 		poster.addKweet(this);
 	}
 
+	public Kweet(Long id, String message, Account poster, Date datePosted) {
+		this.id = id;
+		this.message = message;
+		this.poster = poster;
+		this.datePosted = datePosted;
+	}
+
 	//region Getters and Setters
 	public Long getId() {
 		return id;

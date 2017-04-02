@@ -2,3 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
+
+.list-group {
+    list-style: none;
+}

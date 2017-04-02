@@ -40,6 +40,8 @@ public class Account {
 	@JoinTable(name = "Account_Following")
 	private List<Account> following;
 
+
+
 	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "Account_Followers")
 	private List<Account> followers;
@@ -89,6 +91,10 @@ public class Account {
 
 	public List<Account> getFollowing() {
 		return following;
+	}
+
+	public List<Account> getFollowers() {
+		return followers;
 	}
 
 	public String getUsername() {
