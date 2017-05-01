@@ -33,7 +33,7 @@ public class AuthBean {
 
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return null;
+		return "login.xhtml";
 	}
 
 	public Account getAccountFromName(String username) {

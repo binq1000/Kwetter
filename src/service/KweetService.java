@@ -27,9 +27,9 @@ public class KweetService {
 
 	@Interceptors(VolgTrendInterceptor.class)
 	public void addKweet(Kweet kweet) {
-		AddKweetEvent kweetEvent = new AddKweetEvent(kweet, kweetDao);
-		event.fire(kweetEvent);
-		//kweetDao.addKweet(kweet);
+//		AddKweetEvent kweetEvent = new AddKweetEvent(kweet, kweetDao);
+//		event.fire(kweetEvent);
+		kweetDao.addKweet(kweet);
 	}
 
 	public void removeKweet(Kweet kweet) {

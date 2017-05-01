@@ -51,6 +51,8 @@ public class UserDaoJPA implements UserDao{
 		if (account != null && accountToFollow != null) {
 			account.followUser(accountToFollow);
 		}
+		em.merge(account);
+		em.merge(accountToFollow);
 	}
 
 	@Override

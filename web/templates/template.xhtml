@@ -32,7 +32,16 @@
                     </button>
                     <a class="navbar-brand" href="#">Kwetter</a>
                 </div>
-                <ui:insert name="navContent"/>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="nav navbar-right">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/Kwetter_war_exploded/">Homapage</a></li>
+                            <li><a href="/Kwetter_war_exploded/allkweets.xhtml">Kweets</a></li>
+                        </ul>
+                    </div>
+                    <ui:insert name="navContent"/>
+                </div><!-- /.navbar-collapse -->
+
             </div>
         </nav>
 

@@ -30,7 +30,10 @@ public class Kweet {
 		this.poster = poster;
 		this.datePosted = new Date();
 
-		poster.addKweet(this);
+		if (poster != null) {
+			poster.addKweet(this);
+		}
+
 	}
 
 	public Kweet(Long id, String message, Account poster, Date datePosted) {

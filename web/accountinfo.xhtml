@@ -3,15 +3,15 @@
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:h="http://xmlns.jcp.org/jsf/html" xml:lang="en" lang="en">
+      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xml:lang="en" lang="en">
 <head>
     <ui:composition template="templates/template.xhtml">
         <ui:define name="title">Account details</ui:define>
         <ui:define name="navContent">
-            <form class="navbar-right" action="#{authBean.logout()}" method="post">
-                <!--<p class="navbar-text">#{authBean.getAccount().username} </p>-->
-                <button type="submit" class="btn navbar-btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</button>
-            </form>
+            <h:form class="navbar-right">
+                <h:commandButton class="btn navbar-btn" type="submit" value="Logout" action="#{authBean.logout()}" onclick="" />
+            </h:form>
         </ui:define>
         <ui:define name="content">
             <c:choose>
@@ -27,12 +27,11 @@
                                 <div class="media-body">
                                     <h4 class="media-heading">#{authBean.getAccountFromName(param.username).username}</h4>
                                     #{authBean.getAccountFromName(param.username).details}
-                                    <c:if test="#{authBean.account.username != param.username}">
-                                        <form action="#{userBean.followUser(param.username)}" method="post">
-                                            <button value="submit">Follow</button>
-                                        </form>
-
-                                    </c:if>
+                                    <h:form>
+                                        <h:commandButton class="btn btn-default" type="submit" value="Follow" action="#{userBean.getFollowUser(param.username)}">
+                                            <f:param name="username" value="#{param.username}" />
+                                        </h:commandButton>
+                                    </h:form>
                                 </div>
                             </div>
                         </div>

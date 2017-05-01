@@ -44,7 +44,7 @@ public class KweetDaoJPA implements KweetDao {
 
 	@Override
 	public ArrayList<Kweet> getKweets() {
-		Query query = em.createQuery("SELECT k FROM Kweet k");
+		Query query = em.createQuery("SELECT k FROM Kweet k ORDER BY k.datePosted DESC");
 		return  new ArrayList<Kweet>(query.getResultList());
 	}
 }

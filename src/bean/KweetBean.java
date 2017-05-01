@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Nekkyou on 2-4-2017.
  */
-@Named(value = "kweetBean")
+@Named(value = "KweetBean")
 @SessionScoped
 public class KweetBean implements Serializable{
 
@@ -33,6 +33,16 @@ public class KweetBean implements Serializable{
 		}
 	}
 
+	public String getKweetText() {
+		return kweetText;
+	}
+
+	public void setKweetText(String kweetText) {
+		this.kweetText = kweetText;
+	}
+
+	private String kweetText;
+
 	private Account getAccount(String username) {
 		setAuthBean();
 		return authBean.getAccountFromName(username);
@@ -44,5 +54,21 @@ public class KweetBean implements Serializable{
 
 	public List<Kweet> getKweetsFromAccount(String username) {
 		return getAccount(username).getKweets();
+	}
+
+	public String postKweet() {
+		setAuthBean();
+		if (kweetText != null) {
+			setKweetText(kweetText);
+			System.out.println(kweetText);
+
+			Account acc = authBean.getAccount();
+			if (!kweetText.isEmpty() && acc != null) {
+				Kweet k = new Kweet(kweetText, acc);
+				service.addKweet(k);
+			}
+
+		}
+		return null;
 	}
 }

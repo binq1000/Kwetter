@@ -20,10 +20,9 @@
     <ui:composition template="templates/template.xhtml">
         <ui:define name="title">User</ui:define>
         <ui:define name="navContent">
-            <form class="navbar-right" action="#{authBean.logout()}" method="post">
-                <!--<p class="navbar-text">#{authBean.getAccount().username} </p>-->
-                <button type="submit" class="btn navbar-btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</button>
-            </form>
+            <h:form class="navbar-right">
+                <h:commandButton class="btn navbar-btn" type="submit" value="Logout" action="#{authBean.logout()}" onclick="" />
+            </h:form>
         </ui:define>
         <ui:define name="content">
             <div class="row" style="display: flex">

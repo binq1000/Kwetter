@@ -24,23 +24,35 @@
     <ui:composition template="templates/template.xhtml">
         <ui:define name="title">All Kweets</ui:define>
         <ui:define name="navContent">
-            <form class="navbar-right" action="#{authBean.logout()}" method="post">
-                <!--<p class="navbar-text">#{authBean.getAccount().username} </p>-->
-                <button type="submit" class="btn navbar-btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</button>
-            </form>
+            <h:form class="navbar-right">
+                <h:commandButton class="btn navbar-btn" type="submit" value="Logout" action="#{authBean.logout()}" onclick="" />
+            </h:form>
         </ui:define>
         <ui:define name="content">
-            <ui:repeat var="k" value="#{kweetBean.allKweets}" varStatus="status">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <img src="#{k.poster.imagePath}" alt="Profile picture" height="64" width="64"/>
-                        <a href="user.xhtml?username=#{k.poster.username}">#{k.poster.username}</a>
+            <div class="row">
+                <h:form>
+                    <div class="input-group">
+                        <h:inputText type="text" class="form-control" placeholder="What are you up to? (Totally not the FBI)" value="#{KweetBean.kweetText}" />
+                        <span class="input-group-btn">
+                            <h:commandButton class="btn btn-default" type="submit" value="submit" action="#{KweetBean.postKweet()}" onclick=""/>
+                        </span>
                     </div>
-                    <div class="panel-body">
-                        #{k.message}
+                </h:form>
+            </div>
+
+            <div class="row" style="padding-top: 20px">
+                <ui:repeat var="k" value="#{KweetBean.allKweets}" varStatus="status">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <img src="#{k.poster.imagePath}" alt="Profile picture" height="64" width="64"/>
+                            <a href="user.xhtml?username=#{k.poster.username}">#{k.poster.username}</a>
+                        </div>
+                        <div class="panel-body">
+                            #{k.message}
+                        </div>
                     </div>
-                </div>
-            </ui:repeat>
+                </ui:repeat>
+            </div>
         </ui:define>
 
     </ui:composition>

@@ -97,16 +97,13 @@ public class UserBean implements Serializable {
 		return service.findByName(username).getFollowers();
 	}
 
-	public void followUser(String username) {
-		Account accountToFollow = service.findByName(username);
-		if (!getAccount().getFollowing().contains(accountToFollow)) {
-			service.followUser(getAccount(), accountToFollow);
-			if (getAccount().getFollowing().contains(accountToFollow)) {
-				System.out.println("Followed user");
-			}
-			else {
-				System.out.println("Failed to follow");
-			}
+	public String getFollowUser(String name) {
+		Account accountToFollow = service.findByName(name);
+		Account currAccount = getAccount();
+		if (!currAccount.getFollowing().contains(accountToFollow)) {
+			service.followUser(currAccount, accountToFollow);
 		}
+
+		return "accountinfo.xhtml?username=" + name;
 	}
 }
