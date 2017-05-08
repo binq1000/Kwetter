@@ -10,7 +10,9 @@
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="javascript"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="javascript"></script>
+    <script src="resources/js/jquery-3.2.1.min.js" type="javascript"/>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
@@ -19,9 +21,15 @@
 
     <h:outputStylesheet library="css" name="default.css"/>
     <h:outputScript library="js" name="bootstrap.min.js"/>
+    <h:outputScript library="js" name="echo.js" />
 </h:head>
 <h:body class="container">
-    <ui:composition template="templates/template.xhtml">
+    <h:outputScript>
+        $(document).ready(function (){
+          onLoad();
+        });
+    </h:outputScript>
+    <ui:composition template="template.xhtml">
         <ui:define name="title">All Kweets</ui:define>
         <ui:define name="navContent">
             <h:form class="navbar-right">
@@ -32,9 +40,16 @@
             <div class="row">
                 <h:form>
                     <div class="input-group">
-                        <h:inputText type="text" class="form-control" placeholder="What are you up to? (Totally not the FBI)" value="#{KweetBean.kweetText}" />
+                        <h:inputText id="wstext2" type="text" class="form-control" placeholder="What are you up to? (Totally not the FBI)" value="#{KweetBean.kweetText}" />
                         <span class="input-group-btn">
                             <h:commandButton class="btn btn-default" type="submit" value="submit" action="#{KweetBean.postKweet()}" onclick=""/>
+                            <input
+                                    id="wstext"
+                                    type="text"
+                            />
+                            <button id="sendButton"
+                                    onclick='doSend(document.getElementById("wstext").value);'
+                                    >Send</button>
                         </span>
                     </div>
                 </h:form>

@@ -1,6 +1,8 @@
 package domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.persistence.*;
@@ -33,19 +35,22 @@ public class Account {
 	@Column(nullable = false)
 	private String password;
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Kweet> kweets;
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "Account_Following")
 	private List<Account> following;
 
 
-
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "Account_Followers")
 	private List<Account> followers;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "accounts")
 	private List<AccountGroup> groups;
 

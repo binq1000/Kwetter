@@ -1,5 +1,8 @@
 package restController;
 
+import JmsClasses.SimpleAppGateway;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import domain.Kweet;
 import domain.Account;
 import service.KweetService;
@@ -55,6 +58,25 @@ public class KweetRest {
 		Account account = accountService.findByName(username);
 		Kweet kweet = new Kweet(message, account);
 		service.addKweet(kweet);
+	}
+
+	@POST
+	@Path("queue/{username}/{text}")
+	public void addToQueue(@PathParam("text") String text, @PathParam("username") String username) {
+		System.out.println("Adding: " + text + "; To Queue");
+		SimpleAppGateway sag = new SimpleAppGateway();
+
+		Account account = accountService.findByName(username);
+		Kweet kweet = new Kweet(text, account);
+
+		ObjectMapper mapper = new ObjectMapper();
+		String kweetAsJson = null;
+		try {
+			kweetAsJson = mapper.writeValueAsString(kweet);
+			sag.sendText(kweetAsJson);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -43,6 +43,9 @@ public class UserDaoJPA implements UserDao{
 		query.setParameter("username", username);
 		List<Account> result = query.getResultList();
 
+		if (result == null || result.isEmpty()) {
+			return null;
+		}
 		return result.get(0);
 	}
 
