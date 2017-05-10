@@ -1,5 +1,10 @@
 package WebSocketClasses;
 
+import domain.Account;
+import domain.Kweet;
+import service.AccountService;
+import service.KweetService;
+
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
@@ -17,6 +22,8 @@ public class KweetEndPoint {
 	@OnOpen
 	public void open (Session session, EndpointConfig c) {
 		//Add to list of active users
+
+		Object o = session.getUserProperties();
 		System.out.println("Opened end point");
 	}
 
@@ -29,6 +36,14 @@ public class KweetEndPoint {
 	public void textMessage(Session session, String msg){
 
 		System.out.println("Text : " + msg);
+
+		KweetService service = new KweetService();
+		AccountService accountService = new AccountService();
+		Account account = accountService.findByName("steve");
+
+		Kweet k = new Kweet(msg, account);
+
+		service.addKweet(k);
 	}
 
 	@OnMessage

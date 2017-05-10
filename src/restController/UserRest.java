@@ -7,7 +7,7 @@ import service.AccountService;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.*;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +17,9 @@ import java.util.ArrayList;
 @Produces(MediaType.APPLICATION_JSON)
 @Stateless
 public class UserRest {
+
+	@Context
+	UriInfo uriInfo;
 
 	@Inject
 	AccountService service;
@@ -28,8 +31,18 @@ public class UserRest {
 
 	@GET
 	@Path("{username}")
-	public Account pathTest(@PathParam("username") String username) {
-		return service.findByName(username);
+	public Response getAccount(@PathParam("username") String username) {
+		Account acc = service.findByName(username);
+		Link link = Link.fromUri(uriInfo.getAbsolutePath()).rel("self").type("GET").build();
+		Link delete = Link.fromUri(uriInfo.getAbsolutePath()).rel("delete").type("DELETE").build();
+		Link followers = Link.fromUri(uriInfo.getAbsolutePath() + "/followers").rel("followers").type("GET").build();
+
+		return Response
+				.ok(acc)
+				.links(link)
+				.links(delete)
+				.links(followers)
+				.build();
 	}
 
 	@DELETE
@@ -65,7 +78,7 @@ public class UserRest {
 	}
 
 	@POST
-	@Path("unfollow/{username}/{otherUsername}")
+	@Path("{username}/unfollow/{otherUsername}")
 	public void unfollowUser(@PathParam("username") String username, @PathParam("otherUsername") String otherUsername) {
 		Account account = service.findByName(username);
 		Account accountToFollow = service.findByName(otherUsername);

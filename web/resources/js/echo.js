@@ -34,6 +34,15 @@ function connect() {
     websocket.onmessage = function(evt) {
         //convert json to javascript object
         var message = JSON.parse(evt.data);
+
+        var div = document.createElement("p");
+        var node = document.createTextNode(message);
+
+        div.appendChild(node);
+
+        var element = document.getElementById("kweets");
+        element.appendChild(div);
+
         //write message.text to screen
         log('I: ' + message.text);
     };
